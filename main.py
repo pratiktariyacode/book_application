@@ -1,6 +1,8 @@
 from tkinter import *
 import tkinter as tk 
-from tkinter import messagebox, ttk
+from tkinter import messagebox, ttk , filedialog
+import sqlite3
+
 
 
 
@@ -8,17 +10,75 @@ def command_page():
     print("Loging page")
 
 
+def select_book():
+    pass
+
+def add_book():
+    pass
+
+def update_book():
+    pass
+
+def delete_book():
+    pass
+
+
 def user_loging():
     print("run clicke")
     user_page.withdraw()
     root.deiconify()
+    e1.delete(0, END)
+    e2.delete(0, END)
 
+def admin_loging():
+    admin_page.withdraw()
+    root.deiconify()
+    e1.delete(0, END)
+    e2.delete(0, END)
+    
+
+def add_book_page():
+    global book_add_page
+    book_add_page = Tk()
+    book_add_page.title("Book Add Page")
+
+    Label(book_add_page, text="Add Book", font=("", 15, "bold"), padx=100, pady=10).pack()
+
+    Label(book_add_page, text="Title", font=("", 15, "bold"), pady=2).pack()
+    title_entry = Entry(book_add_page)
+    title_entry.pack()
+
+    Label(book_add_page, text="Author", font=("", 15, "bold"), pady=2).pack()
+    author_entry = Entry(book_add_page)
+    author_entry.pack()
+
+
+    def browse_pdf():
+        filename = filedialog.askopenfilename(
+            filetypes=[("PDF files", "*.pdf")],
+            title="Select a PDF file"
+        )
+        pdf_entry.delete(0, END)
+        pdf_entry.insert(0, filename)
+
+
+    Label(book_add_page, text="PDF", font=("", 15, "bold"), pady=2).pack()
+    pdf_entry = Entry(book_add_page)
+    pdf_entry.pack()
+
+    Button(book_add_page, text="Browse PDF", command=browse_pdf).pack(pady=5)
+    Button(book_add_page,text="add",pady=3,width=15,bg="black",fg="white").pack()
+
+    book_add_page.minsize(300, 300)
+    book_add_page.maxsize(300, 300)
+    book_add_page.mainloop()
 
 
 
 
 def admin_page_fun():
     root.withdraw()
+    global admin_page
     admin_page = Tk()
     admin_page.title("book store free Download")
     Label(admin_page, text='Admin Book List', font=('Arial', 16)).pack(pady=10)
@@ -38,7 +98,7 @@ def admin_page_fun():
     btn2 = Button(button_frame, text="Download")
     btn2.pack(side=LEFT, padx=10)
 
-    btn3 = Button(button_frame, text="Add Book")
+    btn3 = Button(button_frame, text="Add Book",command=add_book_page)
     btn3.pack(side=LEFT, padx=10)
 
     btn4 = Button(button_frame, text="Edit")
@@ -47,7 +107,7 @@ def admin_page_fun():
     btn5 = Button(button_frame, text="Delete")
     btn5.pack(side=LEFT, padx=10)
 
-    loggaupt = Button(button_frame, text="Logaut", command=user_loging)
+    loggaupt = Button(button_frame, text="Logaut", command=admin_loging)
     loggaupt.pack(side=LEFT, padx=10)
     admin_page.minsize(500,500)
     admin_page.maxsize(500,500)
@@ -59,7 +119,7 @@ root = Tk()
 root.title("book store")
 Label(root,text="book store",font=("",16,"bold")).grid(row=0,column=1)
 username = Label(root, text='First Name',width=20,height=2).grid(row=1)
-password = Label(root, text='Last Name',width=20).grid(row=2)
+password = Label(root, text='password',width=20).grid(row=2)
 e1 = Entry(root)
 e2 = Entry(root)
 e1.grid(row=1, column=1)
@@ -141,7 +201,6 @@ root.maxsize(500,500)
 if __name__ == '__main__':
     root.mainloop()
     
-
 
 
 
