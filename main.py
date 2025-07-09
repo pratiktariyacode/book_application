@@ -7,8 +7,8 @@ import shutil
 import sys
 
 # Initialize theme
-ctk.set_appearance_mode("System")  # "Dark", "Light", or "System"
-ctk.set_default_color_theme("blue")  # Optional: "green", "dark-blue"
+ctk.set_appearance_mode("Dark")  # "Dark", "Light", or "System"
+ctk.set_default_color_theme("dark-blue")  # Optional: "green", "dark-blue"
 
 # DB Setup
 conn = sqlite3.connect("books.db")
@@ -331,5 +331,6 @@ center_y = int(screen_height / 2 - window_height / 2)
 
 root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 root.minsize(900,650)
+root.maxsize(900,650)
 
 root.mainloop()
