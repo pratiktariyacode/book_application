@@ -139,9 +139,10 @@ class BookApp:
 
         ctk.CTkButton(frame, text="Add", width=150,height=40, command=self.user_add_book).grid(row=0, column=0, padx=5)
         ctk.CTkButton(frame, text="View PDF", width=150,height=40, command=self.view_pdf).grid(row=0, column=1, padx=5)
-        ctk.CTkButton(frame, text="Refresh", width=150,height=40, command=self.refresh_user_page_data).grid(row=0, column=2, padx=5)
-        ctk.CTkButton(frame, text="Back", width=150,height=40, command=self.login_page).grid(row=0, column=3, padx=5)
-        ctk.CTkButton(frame, text="Download PDF", width=150,height=40, command=self.download_pdf).grid(row=0, column=2, padx=5)
+        ctk.CTkButton(frame, text="Download PDF", width=120,height=40, command=self.download_pdf).grid(row=0, column=2, padx=5)
+        ctk.CTkButton(frame, text="Refresh", width=150,height=40, command=self.refresh_user_page_data).grid(row=0, column=3, padx=5)
+        ctk.CTkButton(frame, text="Back", width=150,height=40, command=self.login_page).grid(row=0, column=4, padx=5)
+
 
         self.tree.bind("<<TreeviewSelect>>", self.load_selected)
 
@@ -191,14 +192,14 @@ class BookApp:
         frame = ctk.CTkFrame(self.root)
         frame.pack(pady=10)
 
-        ctk.CTkButton(frame, text="Add", width=120,height=40, command=self.admin_add_book).grid(row=0, column=0, padx=5)
-        ctk.CTkButton(frame, text="Update", width=120,height=40, command=self.update_book).grid(row=0, column=1, padx=5)
-        ctk.CTkButton(frame, text="Delete", width=150,height=40, command=self.delete_book).grid(row=0, column=2, padx=5)
-        ctk.CTkButton(frame, text="View PDF", width=120,height=40, command=self.view_pdf).grid(row=0, column=3, padx=5)
-        ctk.CTkButton(frame, text="Download PDF", width=120,height=40, command=self.download_pdf).grid(row=0, column=4, padx=5)
-        ctk.CTkButton(frame, text="Refresh",  width=120,height=40,command=self.refresh_admin_page_data).grid(row=0, column=4, padx=5)
-        ctk.CTkButton(frame, text="Logout", width=120,height=40, command=self.login_page).grid(row=0, column=5, padx=5)
-        ctk.CTkButton(frame, text="Download PDF", width=150,height=40, command=self.download_pdf).grid(row=0, column=2, padx=5)
+        ctk.CTkButton(frame, text="Add", width=120, height=40, command=self.admin_add_book).grid(row=0, column=0, padx=5)
+        ctk.CTkButton(frame, text="Update", width=120, height=40, command=self.update_book).grid(row=0, column=1, padx=5)
+        ctk.CTkButton(frame, text="Delete", width=150, height=40, command=self.delete_book).grid(row=0, column=2, padx=5)
+        ctk.CTkButton(frame, text="View PDF", width=120, height=40, command=self.view_pdf).grid(row=0, column=3, padx=5)
+        ctk.CTkButton(frame, text="Download PDF", width=120, height=40, command=self.download_pdf).grid(row=0, column=4, padx=5)
+        ctk.CTkButton(frame, text="Refresh", width=120, height=40, command=self.refresh_admin_page_data).grid(row=0, column=5, padx=5)
+        ctk.CTkButton(frame, text="Logout", width=120, height=40, command=self.login_page).grid(row=0, column=6, padx=5)
+
 
         self.tree.bind("<<TreeviewSelect>>", self.load_selected)
 
@@ -319,7 +320,7 @@ class BookApp:
 root = ctk.CTk()
 app = BookApp(root)
 # root.attributes("-fullscreen",True)
-root.attributes("-toolwindow",True)
+# root.attributes("-toolwindow",True)
 window_width = 800
 window_height = 650
 
@@ -330,7 +331,5 @@ center_x = int(screen_width / 2 - window_width / 2)
 center_y = int(screen_height / 2 - window_height / 2)
 
 root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
-root.minsize(900,650)
-root.maxsize(900,650)
-
-root.mainloop()
+root.minsize(950,600)
+root.mainloop() 
